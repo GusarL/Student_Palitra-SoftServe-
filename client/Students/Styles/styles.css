@@ -1,0 +1,76 @@
+#containerStudent {
+	position: relative;
+	height: 200px;
+	width: 550px;
+	vertical-align: top;
+	/*border: 2px solid black;
+	border-radius: 8px;*/
+}
+
+.studentList {
+	display: inline-block;
+}
+/*#container.containerDetails {
+	position: relative;
+	height: 200px;
+	width: 550px;
+	border: 2px solid black;
+	border-radius: 8px;
+}*/
+
+.studentLi {
+	cursor: pointer;
+    font-size: 24px;
+    height: 1.15em;
+    line-height: 1.15em;
+}
+
+.contDetails {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+    margin-top: 10px;
+    height: 150px;
+	width: 210px;
+	/*border: 2px solid black;
+	border-radius: 8px;*/
+}
+
+.contEditibleDetails {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+	height: 130px;
+	width: 280px;
+	/*border: 2px solid black;
+	border-radius: 8px;*/
+	margin-top: 15px;
+}
+
+.ulDetails, .ulEditibleDetails  {
+    padding: 8px; 
+    margin: 0;
+}
+
+.liDetails, .liEditibleDetails {
+	font-size: 18px;
+	font-style: italic;
+	list-style: none;
+}
+
+.edit, .save {
+    float: right;
+    margin-right: 10px;
+}
+
+.cancelButton {
+	margin-left: 5px;
+    padding-top: 0;
+    color: red;
+}
+
+.studentLi:hover {
+	color: grey;
+	font-weight: bold;
+	width: 210px;
+}

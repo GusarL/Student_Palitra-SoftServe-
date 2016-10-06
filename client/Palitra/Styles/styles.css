@@ -1,0 +1,49 @@
+#containerPalitra {
+	position: relative;
+	height: 195px;
+	width: 650px;
+	border: 2px solid black;
+}
+
+li {
+	font-size: 30px;
+	font-style: bold;
+	list-style: none;
+}
+
+li.blue {
+	color: blue;
+	cursor: pointer;
+}
+
+li.green {
+	color: green;
+	cursor: pointer;
+}
+
+li.red {
+	color: red;
+	cursor: pointer;
+}
+
+#containerPalitra > div {
+	display: inline-block;
+	vertical-align: top;
+	margin: 5px;
+	height: 176px;
+	width: 200px;
+	border: 2px solid black;
+}
+
+div.blue {
+	background-color: blue;
+}
+
+div.green {
+	background-color: green;
+}
+
+div.red {
+	background-color: red;
+}
+
