@@ -10,8 +10,8 @@ function Container () {
         dataColors.forEach(function (elem, i) {
             var item = new Color();
                          
-            item.setColor(elem);
-            item.resetColorCounter();
+            item.set('color', elem);
+            item.set('colorCounter', 0);
                        
             colors.push(item);
         });

@@ -8,7 +8,7 @@ http.createServer(function(request, response) {
    var pathname =  baseRoot + url.parse(request.url).pathname;
     
     if (pathname.indexOf('/getStudents') != -1) {
-        pathname = baseRoot + '/Students/studentList.json';
+        pathname = './studentList.json';
     }
 
     if (pathname.indexOf('.css') != -1 || pathname.indexOf('.js') != -1 || pathname.indexOf('.html') != -1 || pathname.indexOf('.json') != -1) {

@@ -12,11 +12,11 @@ function Collection () {
         dataStudentList.forEach(function (elem, i) {
             var item = new Student();
              
-            item.setName(elem[0]);
-            item.setLastName(elem[1]);
-            item.setGender(elem[2]);
-            item.setSkype(elem[3]);
-            
+            item.set('name', elem[0]);
+            item.set('lastName', elem[1]);
+            item.set('gender', elem[2]);
+            item.set('skype', elem[3]);
+
             students.push(item);
         });
 

@@ -1,51 +1,25 @@
 'use strict';
  function Student () {
- 	var name = '',
- 	    lastName = '',
- 	    gender = '',
- 	    skype = '',
+ 	var attributes = {},
         observer;
-
+   
 	observer = new Mediator();
     
-    this.setName = function (_name) {
-        name = _name;
-    };
-    
-    this.getName = function () {
-        return name;
+    this.set = function (key, value) {
+        attributes[key] = value;
     };
 
-    this.setLastName = function (_lastName) {
-        lastName = _lastName;
-    };
-    
-    this.getLastName = function () {
-        return lastName;
-    };
-
-    this.setGender = function (_gender) {
-        gender = _gender;
-    };
-
-    this.getGender = function () {
-        return gender;
-    };
-
-    this.setSkype = function (_skype) {
-        skype = _skype;
-    };
-
-    this.getSkype = function () {
-        return skype;
+    this.get = function (key) {
+                      
+        return attributes[key];
     };
 
     this.toJSON = function () {
         var studentJSON = {
-                name: this.getName(),
-                lastName: this.getLastName(),
-                gender: this.getGender(),
-                skype: this.getSkype()
+                name: this.get('name'),
+                lastName: this.get('lastName'),
+                gender: this.get('gender'),
+                skype: this.get('skype')
         };
 
         return studentJSON;
@@ -57,6 +31,10 @@
 
     this.save = function () {
         observer.pub('student-changed', this);
+    };
+
+    this.delete = function () {
+        observer.pub('student-deleted', this);
     };
 
     return this;

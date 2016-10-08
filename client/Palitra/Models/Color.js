@@ -1,34 +1,25 @@
 'use strict';
  function Color () {
- 	var color = '',
+ 	var attributes = {},
         observer,
-        self = this,
-        colorCounter;
- 	
+        self = this;
+         	
     observer = new Mediator();
-   
-    this.setColor = function (colorData) {
-        color = colorData;
+    
+    this.set = function (key, value) {
+        attributes[key] = value;
     };
 
-    this.getColor = function () {
-        return color;
+    this.get = function (key) {
+                      
+        return attributes[key];
     };
     
-    this.setColorCounter = function (colorCounterData) {
-        colorCounter = colorCounterData;
-    };
-
-    this.getColorCounter = function () {
-        return colorCounter;
-    };
-
-    this.resetColorCounter = function () {
-        return colorCounter = 0;
-    };    
-
     this.counterIncrease = function () {
+        var colorCounter = this.get('colorCounter');
+
         colorCounter = ++colorCounter;
+        this.set('colorCounter', colorCounter);
         observer.pub('counter-increased', self);
 
         return colorCounter;

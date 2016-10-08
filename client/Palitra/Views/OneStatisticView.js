@@ -7,14 +7,16 @@ function OneStatisticView (colorsCollectionEntity) {
 
 	function createElement () {
         staticticElement = document.createElement('li');
-        staticticElement.className = colorsCollectionEntity.getColor();
-        staticticElement.innerHTML = colorsCollectionEntity.getColor() + ' - ' + createStatisticHTML(colorsCollectionEntity);
+        staticticElement.className = colorsCollectionEntity.get('color');
+        staticticElement.innerHTML = colorsCollectionEntity.get('color') + ' - ' + createStatisticHTML(colorsCollectionEntity);
+       
+        changeStatistic(colorsCollectionEntity);
     } 
 
     function changeStatistic (colorsCollectionEntity) {
         var count = staticticElement.querySelector('.count');
 
-        count.innerHTML = colorsCollectionEntity.getColorCounter();
+        count.innerHTML = colorsCollectionEntity.get('colorCounter');
     }
         
     this.getElement = function() {

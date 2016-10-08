@@ -9,12 +9,11 @@ var ajax = (function () {
 
         xhr.open('GET', _uri(name), true);
 
-        xhr.addEventListener('readystatechange', function () {console.log('readystatechange')
-            
+        xhr.addEventListener('readystatechange', function () {
             if (xhr.readyState != 4) return;
 
             if (xhr.readyState === 4 && xhr.status === 200) {
-                handleData(xhr.responseText);console.log(xhr.responseText);
+                handleData(xhr.responseText);
             } else {
                     console.log('Ошибка ' + xhr.status + ': ' + xhr.statusText);    
             }

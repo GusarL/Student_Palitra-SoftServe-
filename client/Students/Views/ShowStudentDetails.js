@@ -40,16 +40,16 @@ function ShowStudentDetails (students) {
 
             [].forEach.call (inputList, function (elem) {
                 if (elem.getAttribute('name') === 'name') { 
-                     student.setName(elem.value);
+                     student.set('name', elem.value);
                 }
                 if (elem.getAttribute('name') === 'lastName') { 
-                     student.setLastName(elem.value);
+                     student.set('lastName', elem.value);
                 }
                 if (elem.getAttribute('name') === 'gender') { 
-                     student.setGender(elem.value);
+                     student.set('gender', elem.value);
                 }
                 if (elem.getAttribute('name') === 'skype') { 
-                     student.setSkype(elem.value);
+                     student.set('skype', elem.value);
                 }
             });
             student.save();

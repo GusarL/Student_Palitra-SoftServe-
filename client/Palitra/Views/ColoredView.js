@@ -11,7 +11,7 @@ function ColoredView (coloredViewContainer) {
 
     function renderColoredView (color) {
     	clearColor(coloredFrame);
-        coloredFrame.classList.add(color.getColor());
+        coloredFrame.classList.add(color.get('color'));
     };
 
     mediator.sub('color-selected', renderColoredView);

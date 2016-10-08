@@ -1,5 +1,5 @@
 'use strict';
-function OneStudentView (student, studentCollection) {
+function OneStudentView (student) {
     var studentElement,
         deleteButton,
         detailsView; 
@@ -23,7 +23,7 @@ function OneStudentView (student, studentCollection) {
     function deleteElement (event) {
         event.stopPropagation();
         studentElement.remove();
-        studentCollection.remove(student);
+        student.delete();
     }
     
     function changeStudent () {

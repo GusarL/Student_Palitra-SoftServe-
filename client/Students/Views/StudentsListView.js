@@ -1,13 +1,12 @@
 'use strict';
 function StudentsListView (studentCollection) {
     var showStudentsList,
-        renderDetails,
+        // renderDetails,
         parentElem,
-        studentSet,
-        student;
-  
-    studentCollection.sub('collection-inited', showStudentsList); 
-      
+        studentSet;
+        
+    studentCollection.sub('collection-inited', showStudentsList);
+         
     parentElem = document.createElement('div');
     parentElem.className = 'studentList';
     studentSet = document.createElement('ul');
@@ -20,6 +19,7 @@ function StudentsListView (studentCollection) {
             var item;
          
             item = new OneStudentView(elem, studentCollection);
+            elem.sub('student-deleted', studentCollection.remove); 
             item.render();
 
             studentSet.appendChild(item.getElement());

@@ -3,12 +3,16 @@ function OneColorView (colorsCollectionEntity) {
 	var colorElement;
 	    
 	colorElement = document.createElement('li');
-    colorElement.className = colorsCollectionEntity.getColor();
-    colorElement.innerHTML = colorsCollectionEntity.getColor().toUpperCase();
+    colorElement.className = colorsCollectionEntity.get('color');
+    colorElement.innerHTML = colorsCollectionEntity.get('color').toUpperCase();
 
     colorElement.addEventListener('click', function () {
+        var increasedCounter;
+
         mediator.pub('color-selected', colorsCollectionEntity);
-        colorsCollectionEntity.counterIncrease();
+        increasedCounter = colorsCollectionEntity.counterIncrease();
+        colorsCollectionEntity.set('colorCounter', increasedCounter);
+
     }, false);
     
     this.getElement = function() {

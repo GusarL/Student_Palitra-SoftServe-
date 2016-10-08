@@ -30,9 +30,9 @@ function StatisticView (colorsCollection) {
 		var colorSpan,
 	        colorLi;
 	     
-	    colorLi = statisticViewFrame.querySelector('.' + colorsCollectionEntity.getColor());
+	    colorLi = statisticViewFrame.querySelector('.' + colorsCollectionEntity.get('color'));
 	    colorSpan =  colorLi.querySelector('span');
-	    colorSpan.textContent = colorsCollectionEntity.counterIncrease(); 
+        colorSpan.textContent = colorsCollectionEntity.set('colorCounter', colorsCollectionEntity.counterIncrease()); 
 	}
 
 	return this;
