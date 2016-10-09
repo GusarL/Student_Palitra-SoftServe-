@@ -1,7 +1,6 @@
 'use strict';
 function StudentsListView (studentCollection) {
     var showStudentsList,
-        // renderDetails,
         parentElem,
         studentSet;
         

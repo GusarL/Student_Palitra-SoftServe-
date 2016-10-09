@@ -1,41 +1,63 @@
 'use strict';
- function Color () {
- 	var attributes = {},
-        observer,
-        self = this;
+var Color = (function () {
+              
+                    function C () {
+                        ModelSC.apply(this, null); 
+                    }
+                    
+                    extend(C, ModelSC);
+
+                    function _counterIncrease () {
+                        var colorCounter = this.get('colorCounter');
+
+                        colorCounter = ++colorCounter;
+                        this.set('colorCounter', colorCounter);
+                        observer.pub('counter-increased', self);
+
+                        return colorCounter;
+                    };
+
+                    C.prototype.counterIncrease = _counterIncrease;
+                    
+                    return C;
+                })();
+ // function Color () {
+ 	// var attributes = {},
+  //       observer,
+  //       self = this;
          	
-    observer = new Mediator();
+  //   observer = new Mediator();
     
-    this.set = function (key, value) {
-        attributes[key] = value;
-    };
+  //   this.set = function (key, value) {
+  //       attributes[key] = value;
+  //   };
 
-    this.get = function (key) {
+  //   this.get = function (key) {
                       
-        return attributes[key];
-    };
+  //       return attributes[key];
+  //   };
     
-    this.counterIncrease = function () {
-        var colorCounter = this.get('colorCounter');
+  //   this.counterIncrease = function () {
+  //       var colorCounter = this.get('colorCounter');
 
-        colorCounter = ++colorCounter;
-        this.set('colorCounter', colorCounter);
-        observer.pub('counter-increased', self);
+  //       colorCounter = ++colorCounter;
+  //       this.set('colorCounter', colorCounter);
+  //       observer.pub('counter-increased', self);
 
-        return colorCounter;
-    }; 
+  //       return colorCounter;
+  //   }; 
     
-    this.toJSON = function () {
-        var colorsJSON = {
-                color: this.getColor(),
-                counter: this.getColorCounter(),
-        };
+  //   this.toJSON = function () {
+  //       var colorsJSON = {
+  //               color: this.get('color'),
+  //               counter: this.get('colorCounter'),
+  //       };
 
-        return colorsJSON;
-    };
+  //       return colorsJSON;
+  //   };
     
-    this.sub = function (ev, fn) {
-        observer.sub(ev, fn); 
-    }
-    return this;
-}
+  //   this.sub = function (ev, fn) {
+  //       observer.sub(ev, fn); 
+  //   }
+  //   return this;
+// }

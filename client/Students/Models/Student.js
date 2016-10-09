@@ -1,41 +1,42 @@
 'use strict';
- function Student () {
- 	var attributes = {},
-        observer;
-   
-	observer = new Mediator();
+var Student = (function () {
+              
+                    function S () {
+                        ModelSC.apply(this, null); 
+                    }
+                    
+                    extend(S, ModelSC);
+
+                    function _save () {
+                        observer.pub('student-changed', this);
+                    };
+
+                    function _delete  () {
+                        observer.pub('student-deleted', this);
+                    };
+
+                    S.prototype.save = _save;
+                    S.prototype.delete = _delete;
+
+                    return S;
+                })();
+// var Student  = function () {
+//     ModelSC.apply(this, null);
     
-    this.set = function (key, value) {
-        attributes[key] = value;
-    };
+//     return this;
+// }
+//     extend(Student, ModelSC);
 
-    this.get = function (key) {
-                      
-        return attributes[key];
-    };
+    // function _save () {
+    //     observer.pub('student-changed', this);
+    // };
 
-    this.toJSON = function () {
-        var studentJSON = {
-                name: this.get('name'),
-                lastName: this.get('lastName'),
-                gender: this.get('gender'),
-                skype: this.get('skype')
-        };
+    // function _delete  () {
+    //     observer.pub('student-deleted', this);
+    // };
 
-        return studentJSON;
-    };
+    // Student.prototype.save = _save;
+    // Student.prototype.delete = _delete;
 
-    this.sub = function (ev, fn) {
-        observer.sub(ev, fn); 
-    }
+    
 
-    this.save = function () {
-        observer.pub('student-changed', this);
-    };
-
-    this.delete = function () {
-        observer.pub('student-deleted', this);
-    };
-
-    return this;
-}

@@ -6,7 +6,10 @@ function StudentController () {
         studentsList;
           
     studentCollection = new Collection();
-  
+//  studentCollection.forEach(function (elem) {
+//     console.log(elem.toJSON());
+// }); 
+   
     containerStudent = document.getElementById('containerStudent');
 
     studentsList = new StudentsListView(studentCollection);
