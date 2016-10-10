@@ -2,10 +2,11 @@
 function StatisticView (colorsCollection) {
 	var statisticViewFrame;
 
+    colorsCollection.sub('collection-inited', render);
     statisticViewFrame = document.createElement('div');
     statisticViewFrame.classList.add('statisticView');
        
-    this.render = function (colorsCollection) {
+    function render (colorsCollection) {
         var parentElem;
                    
         parentElem = document.createElement('ul');

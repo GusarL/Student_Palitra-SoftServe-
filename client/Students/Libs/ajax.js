@@ -1,7 +1,8 @@
 'use strict';
 var ajax = (function () {
     var routes = {
-        'students': '/getStudents'
+        'students': '/getStudents',
+        'colors': '/getColors'
     };
 
     function _load (name, handleData) {

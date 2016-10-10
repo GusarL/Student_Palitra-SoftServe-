@@ -11,6 +11,10 @@ http.createServer(function(request, response) {
         pathname = './studentList.json';
     }
 
+    if (pathname.indexOf('/getColors') != -1) {
+        pathname = './colorList.json';
+    }
+
     if (pathname.indexOf('.css') != -1 || pathname.indexOf('.js') != -1 || pathname.indexOf('.html') != -1 || pathname.indexOf('.json') != -1) {
 
         fs.exists(pathname, function(exists) {

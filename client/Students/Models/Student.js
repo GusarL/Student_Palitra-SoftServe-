@@ -8,11 +8,11 @@ var Student = (function () {
                     extend(S, ModelSC);
 
                     function _save () {
-                        observer.pub('student-changed', this);
+                        this.observer.pub('student-changed', this);
                     };
 
                     function _delete  () {
-                        observer.pub('student-deleted', this);
+                        this.observer.pub('student-deleted', this);
                     };
 
                     S.prototype.save = _save;
@@ -20,23 +20,3 @@ var Student = (function () {
 
                     return S;
                 })();
-// var Student  = function () {
-//     ModelSC.apply(this, null);
-    
-//     return this;
-// }
-//     extend(Student, ModelSC);
-
-    // function _save () {
-    //     observer.pub('student-changed', this);
-    // };
-
-    // function _delete  () {
-    //     observer.pub('student-deleted', this);
-    // };
-
-    // Student.prototype.save = _save;
-    // Student.prototype.delete = _delete;
-
-    
-
