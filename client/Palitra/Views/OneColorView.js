@@ -1,23 +1,27 @@
 'use strict';
-function OneColorView (colorsCollectionEntity) {
-	var colorElement;
-	    
-	colorElement = document.createElement('li');
-    colorElement.className = colorsCollectionEntity.get('color');
-    colorElement.innerHTML = colorsCollectionEntity.get('color').toUpperCase();
+var OneColorView = Backbone.View.extend({
+	tagName: 'li',
+   	    
+	events: {
+        'click': 'increaseStatistic'
+    },
 
-    colorElement.addEventListener('click', function () {
+    render: function () {
+        var color = this.model.get('color');
+
+        this.$el.text(color.toUpperCase());
+        this.$el.addClass(color);
+
+        return this;
+    },
+ 
+    increaseStatistic: function () {
         var increasedCounter;
 
-        mediator.pub('color-selected', colorsCollectionEntity);
-        increasedCounter = colorsCollectionEntity.counterIncrease();
-        colorsCollectionEntity.set('colorCounter', increasedCounter);
+        mediator.pub('color-selected', this.model.get('color'));
+        increasedCounter = this.model.counterIncrease();
+        this.model.set('colorCounter', increasedCounter);
+    }
+});
 
-    }, false);
-    
-    this.getElement = function() {
-        return colorElement;
-    };
 
-    return this; 
-}

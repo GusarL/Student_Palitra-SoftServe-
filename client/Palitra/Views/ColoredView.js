@@ -1,28 +1,18 @@
 'use strict';
-function ColoredView (coloredViewContainer) {
-    var coloredFrame;
-
-    coloredFrame = document.createElement('div');
-    coloredFrame.classList.add('coloredView');
+var ColoredView = Backbone.View.extend({
+    tagName: 'div',
     
-    this.getElement = function() {
-        return coloredFrame;
-    };
+    initialize: function () {
+         mediator.sub('color-selected', this.changeColor.bind(this));
+    },
 
-    function renderColoredView (color) {
-    	clearColor(coloredFrame);
-        coloredFrame.classList.add(color.get('color'));
-    };
+    render: function () {
 
-    mediator.sub('color-selected', renderColoredView);
+    	return this;
+    },
 
-    function clearColor (elem) {
-        [].forEach.call(elem.classList, function (item) {
-            if (item !== 'coloredView') {
-                elem.classList.remove(item);     
-            }
-        });
+    changeColor: function (color) {
+        this.$el.addClass(color);
     }
 
-    return this;
-}
+});

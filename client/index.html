@@ -3,33 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Palette&Students</title>
+    
     <!-- libs -->
+    <script src="libs/jquery-3.1.1.js"></script>
+    <script src="libs/underscore.js"></script>
+    <script src="libs/backbone.js"></script>
     <script src="libs/mediator.js"></script>
-    <script src="libs/extend.js"></script>
-    <!-- structure -->
-    <script src="structure/ModelSC.js"></script>
-    <script src="structure/ContainerSC.js"></script>
-	<!-- Palette -->
+       	
+    <!-- Palette -->
 	<link rel="stylesheet" href="Palitra/Styles/styles.css">
 	
-	
     <script src="Palitra/Models/Color.js"></script>
-	<script src="Palitra/Models/ColorContainer.js"></script>
+	<script src="Palitra/Models/ColorsContainer.js"></script>
 	
     <script src="Palitra/Libs/template.js"></script>
    	
     <script src="Palitra/Views/OneColorView.js"></script>
-    <script src="Palitra/Views/OneStatisticView.js"></script>
-    <script src="Palitra/Views/ColoredView.js"></script>
-    <script src="Palitra/Views/StatisticView.js"></script>
     <script src="Palitra/Views/ColorsListView.js"></script>
+    <script src="Palitra/Views/ColoredView.js"></script>
+    <script src="Palitra/Views/OneStatisticView.js"></script>
+    <script src="Palitra/Views/StatisticView.js"></script>
 
-    <script src="Palitra/Controller.js"></script>
+    <script src="Palitra/PalitraController.js"></script>
 	
 	<!-- Student -->
     <link rel="stylesheet" href="Students/Styles/styles.css">
 
-    <script src="Students/Libs/ajax.js"></script>
     <script src="Students/Libs/template.js"></script>
 
     <script src="Students/Models/Student.js"></script>
@@ -39,12 +38,16 @@
     <script src="Students/Views/StudentsListView.js"></script>
     <script src="Students/Views/ShowStudentDetails.js"></script>
 
-    <script src="Students/Controller.js"></script>
+    <script src="Students/StudentController.js"></script>
 	
     <script src="main.js"></script>
 </head>
 <body>
-	<div id="containerPalitra"></div>
+	<div id="containerPalitra">
+        <div class="colorListView"></div>
+        <div class="coloredView"></div>
+        <div class="statisticView"></div>    
+    </div>
 	<div id="containerStudent"></div>
 </body>
 </html>

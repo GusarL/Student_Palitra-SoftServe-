@@ -1,32 +1,22 @@
 'use strict';
-function ColorsListView (colorsCollection) {
-	var colorsListFrame;
+var ColorsListView = Backbone.View.extend({
+    tagName: 'ul',
+    className: 'list',
+	
+    initialize: function () {
+        this.collection.on('sync', this.render, this);
+    },
            
-    colorsCollection.sub('collection-inited', render);
-    colorsListFrame = document.createElement('div');
-    colorsListFrame.classList.add('colorListView');
-  
-    function render (colorsCollection) {
-        var parentElem;
-                   
-        parentElem = document.createElement('ul');
-        parentElem.className = 'list';
-       
-        colorsCollection.forEach(function (elem) {   
-            var item;
+    render: function () {
+        this.collection.forEach(this.addLi, this);
+
+        return this;
+    },
+
+    addLi: function (color) {
+        var item;
          
-            item = new OneColorView(elem);
-            parentElem.appendChild(item.getElement());
-        });
-        
-        colorsListFrame.appendChild(parentElem);
-
-        return colorsListFrame;
+        item = new OneColorView({model: color});
+        this.$el.append(item.render().el);
     }
-   
-    this.getElement = function() {
-        return colorsListFrame;
-    }; 
-
-    return this;
-}
+});

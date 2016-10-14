@@ -1,23 +1,17 @@
 'use strict';
-var Color = (function () {
-              
-                    function C () {
-                        ModelSC.apply(this, null); 
-                    }
-                    
-                    extend(C, ModelSC);
+var Color = Backbone.Model.extend({
+    defaults: {
+        'color': '',
+        'colorCounter': ''
+    },
+    counterIncrease: function () {
+        var colorCounter = this.get('colorCounter');
 
-                    function _counterIncrease () {
-                        var colorCounter = this.get('colorCounter');
+        colorCounter = ++colorCounter;
+        this.set('colorCounter', colorCounter);
+        this.trigger('counter-increased');
 
-                        colorCounter = ++colorCounter;
-                        this.set('colorCounter', colorCounter);
-                        this.observer.pub('counter-increased', this);
-
-                        return colorCounter;
-                    };
-
-                    C.prototype.counterIncrease = _counterIncrease;
-                    
-                    return C;
-                })();
+        return colorCounter;
+    }
+})
+           

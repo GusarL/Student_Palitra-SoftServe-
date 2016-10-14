@@ -1,38 +1,32 @@
 'use strict';
-function OneStudentView (student) {
-    var studentElement,
-        deleteButton,
-        detailsView; 
+var OneStudentView = Backbone.View.extend({
+    tagName: 'li',
+    className: 'studentLi',
 
-    student.sub('student-changed', changeStudent);
-   
-    this.render = function () {
-        studentElement = document.createElement('li');
-        studentElement.className = 'studentLi';
-        studentElement.innerHTML = liTemplate(student.toJSON());
+    initialize: function () {
+        this.model.on('change', this.render, this);
+    },
+
+    events: {
+        'click': 'studentSelected',
+        'click .deleteButton': 'deleteElement'
+    },
+
+    render: function () {
         
-        deleteButton = studentElement.getElementsByClassName('deleteButton')[0];        
-       
-        studentElement.addEventListener('click', function () {
-            mediator.pub('student-selected', student);
-        }, false);
-       
-        deleteButton.addEventListener('click', deleteElement, false);
-    }
-   
-    function deleteElement (event) {
+        this.$el.html(liTemplate(this.model.toJSON()));
+
+        return this;
+    },
+
+    studentSelected: function () {
+        mediator.pub('student-selected', this.model);
+    },
+
+    deleteElement: function (event) {
         event.stopPropagation();
-        studentElement.remove();
-        student.delete();
+        this.el.remove();
+        this.model.destroy();
     }
-    
-    function changeStudent () {
-        studentElement.innerHTML = liTemplate(student.toJSON());
-    }
+});
 
-    this.getElement = function() {
-        return studentElement;
-    };
-
-    return this;
-}

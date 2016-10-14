@@ -37,13 +37,16 @@ li.red {
 
 div.blue {
 	background-color: blue;
+    height: 100%;
 }
 
 div.green {
 	background-color: green;
+	height: 100%;
 }
 
 div.red {
 	background-color: red;
+	height: 100%;
 }
 

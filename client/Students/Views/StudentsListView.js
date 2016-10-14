@@ -1,47 +1,23 @@
 'use strict';
-function StudentsListView (studentCollection) {
-    var showStudentsList,
-        parentElem,
-        studentSet;
-        
-    studentCollection.sub('collection-inited', showStudentsList);
-         
-    parentElem = document.createElement('div');
-    parentElem.className = 'studentList';
-    studentSet = document.createElement('ul');
-    studentSet.className = 'list';
+var StudentsListView = Backbone.View.extend({
+    tagName: 'ul',
+    className: 'list',
     
-    function showStudentsList (studentCollection) {  
-        removeElement();
+    initialize: function () {
+        this.collection.on('sync', this.render, this);
+    },
+    
+    render: function () {
+        this.collection.forEach(this.addLi, this);
 
-        studentCollection.forEach(function (elem) {
-            var item;
+        return this;
+    },
+    
+    addLi: function (student) {
+        var item;
          
-            item = new OneStudentView(elem, studentCollection);
-            elem.sub('student-deleted', studentCollection.remove); 
-            item.render();
-
-            studentSet.appendChild(item.getElement());
-        });
-                           
-        parentElem.appendChild(studentSet);
+        item = new OneStudentView({model: student});
+        this.$el.append(item.render().el);
     }
-    
-    function removeElement () {
-        var isEmpty = studentSet.childNodes.length;
+});
 
-        if (isEmpty) {
-            var showedList =  studentSet.querySelectorAll('.studentLi');
-
-            [].forEach.call (showedList, function (elem, i) {
-                elem.remove();
-            });    
-        }
-    } 
-
-    this.getElement = function() {
-        return parentElem;
-    }; 
-
-	return this;
-}

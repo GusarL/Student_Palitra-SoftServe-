@@ -1,27 +1,28 @@
 'use strict';
-function OneStatisticView (colorsCollectionEntity) {
-	var staticticElement;
-	
-    colorsCollectionEntity.sub('counter-increased', changeStatistic);
-    createElement();
+var OneStatisticView = Backbone.View.extend({
+	tagName: 'li',
+   	
+    initialize: function () {
+        this.model.on('change:colorCounter', this.changeStatistic, this);
 
-	function createElement () {
-        staticticElement = document.createElement('li');
-        staticticElement.className = colorsCollectionEntity.get('color');
-        staticticElement.innerHTML = colorsCollectionEntity.get('color') + ' - ' + createStatisticHTML(colorsCollectionEntity);
+    },
+   
+	render: function () {
+        var color = this.model.get('color');
+
+        this.$el.addClass(color);
+        this.$el.html(color + ' - ' + createStatisticHTML(this.model));
        
-        changeStatistic(colorsCollectionEntity);
-    } 
+        this.changeStatistic();
 
-    function changeStatistic (colorsCollectionEntity) {
-        var count = staticticElement.querySelector('.count');
+        return this;
+    }, 
 
-        count.innerHTML = colorsCollectionEntity.get('colorCounter');
+    changeStatistic: function () {
+        
+        this.$el.find('.count').text(this.model.get('colorCounter'));
     }
         
-    this.getElement = function() {
-        return staticticElement;
-    };
+   
+});
 
-    return this; 
-}

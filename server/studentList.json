@@ -1,1 +1,44 @@
-[["Anton","Volyk","m","tohavolik"],["Serhii","Kopylov","m","live:db7bcd884d24eaba"],["Liudmyla","Husar","f","blerwoldorf"],["Lina","Kopylenko","f","lina7inlove"],["Maxim","Kondzera","m","makc___94"],["Evgeny","Kliuchyk","m","voitishek"]]
+[
+    {
+        "lastName": "Volyk",
+        "name": "Anton", 
+        "gender": "male", 
+        "skype": "tohavolik",
+        "id": "0"
+    },
+    {
+        "lastName": "Kopylov",
+        "name": "Serhii", 
+        "gender": "male", 
+        "skype": "live:db7bcd884d24eaba",
+        "id": "1"
+    },
+    {
+        "lastName": "Husar", 
+        "name": "Liudmyla", 
+        "gender": "female", 
+        "skype": "blerwoldorf",
+        "id": "2"
+    },
+    {
+        "lastName": "Kopylenko",
+        "name": "Lina", 
+        "gender": "female", 
+        "skype": "lina7inlove",
+        "id": "3"
+    },
+    {
+        "lastName": "Kondzera",
+        "name": "Maxim",
+        "gender": "male",
+        "skype": "makc___94",
+        "id": "4"
+    },
+    {
+        "name": "Kliuchyk", 
+        "lastName": "Evgeny", 
+        "gender": "male", 
+        "skype": "voitishek",
+        "id": "5"
+    }
+]
