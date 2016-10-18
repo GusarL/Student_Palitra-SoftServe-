@@ -1,13 +1,10 @@
 'use strict';
 function StudentController () {
     var studentCollection,
-        containerStudent,
         studentsDetails,
         studentsList;
           
     studentCollection = new StudentContainer();
-    
-    containerStudent = document.getElementById('containerStudent');
     
     studentsList = new StudentsListView({collection: studentCollection});
     studentsDetails = new ShowStudentDetails(); 

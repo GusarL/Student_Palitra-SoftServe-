@@ -3,6 +3,11 @@ var ShowStudentDetails = Backbone.View.extend({
     tagName: 'div',
     className: 'contDetails',
     
+    events: {
+        'click .edit': 'renderEditibleDetails',
+        'click .save': 'saveEditedList'
+    },
+
     initialize: function () {
         mediator.sub('student-selected', this.renderDetails.bind(this));
     },    
@@ -13,20 +18,23 @@ var ShowStudentDetails = Backbone.View.extend({
     },
 
     renderDetails: function (student) {
-        this.$el.html(detailsTemplate(student.toJSON()));
-        this.$el.find('.edit').click($.proxy(this.renderEditibleDetails, this, student));
+        var compiled = _.template(tpl.detailsStudents);
+        
+        this.currentStudent = student;
+        this.$el.html(compiled(this.currentStudent.toJSON()));
     },
 
-    renderEditibleDetails: function (student) {
-        this.$el.html(editTemplate(student.toJSON()));
-        this.$el.find('.save').click($.proxy(this.saveEditedList, this, student));
+    renderEditibleDetails: function () {
+        var compiled = _.template(tpl.editStudent);
+        
+        this.$el.html(compiled(this.currentStudent.toJSON()));
     },
         
-    saveEditedList: function  (student) {
-        student.set('name', $('input[name="name"]').val());
-        student.set('lastName', $('input[name="lastName"]').val());
-        student.set('gender', $('input[name="gender"]').val());
-        student.set('skype', $('input[name="skype"]').val());
+    saveEditedList: function  () {
+        this.currentStudent.set({name: $('[name="name"]').val(),
+                     lastName: $('[name="lastName"]').val(),
+                     gender: $('[name="gender"]').val(),
+                     skype: $('[name="skype"]').val()});
     }
 });
 

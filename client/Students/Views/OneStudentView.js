@@ -3,18 +3,19 @@ var OneStudentView = Backbone.View.extend({
     tagName: 'li',
     className: 'studentLi',
 
-    initialize: function () {
-        this.model.on('change', this.render, this);
-    },
-
     events: {
         'click': 'studentSelected',
         'click .deleteButton': 'deleteElement'
     },
 
+    initialize: function () {
+        this.model.on('change', this.render, this);
+    },
+
     render: function () {
+        var compiled = _.template(tpl.oneStudentView);
         
-        this.$el.html(liTemplate(this.model.toJSON()));
+        this.$el.html(compiled(this.model.toJSON()));
 
         return this;
     },
@@ -25,7 +26,7 @@ var OneStudentView = Backbone.View.extend({
 
     deleteElement: function (event) {
         event.stopPropagation();
-        this.el.remove();
+        this.remove();
         this.model.destroy();
     }
 });

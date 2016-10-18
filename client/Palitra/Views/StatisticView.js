@@ -13,9 +13,8 @@ var StatisticView = Backbone.View.extend({
     },
     
     addLi: function (color) {
-        var item;
-         
-        item = new OneStatisticView({model: color});
+        var item = new OneStatisticView({model: color});
+        
         this.$el.append(item.render().el);
     }
 });

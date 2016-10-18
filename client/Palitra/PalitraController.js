@@ -1,22 +1,18 @@
 'use strict';
 function PalitraController () {
     var colorsCollection,
-        containerPalitra,
         colorCounter,
         colorsList,
         colorBox;
    	
 	colorsCollection = new ColorsContainer();
     	
-	containerPalitra = document.getElementById('containerPalitra');
-   
-    colorsList = new ColorsListView({collection: colorsCollection});
-    $('.colorListView').append(colorsList.render().el);
-              
+	colorsList = new ColorsListView({collection: colorsCollection});
     colorBox = new ColoredView({collection: colorsCollection});
-    $('.coloredView').append(colorBox.render().el);
-        
     colorCounter = new StatisticView({collection: colorsCollection});
+    
+    $('.colorListView').append(colorsList.render().el);
+    $('.coloredView').append(colorBox.render().el);
     $('.statisticView').append(colorCounter.render().el); 
     
     return this;

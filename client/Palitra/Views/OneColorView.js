@@ -7,20 +7,20 @@ var OneColorView = Backbone.View.extend({
     },
 
     render: function () {
-        var color = this.model.get('color');
+        var compiled = _.template(tpl.oneColorView),
+            el;
 
-        this.$el.text(color.toUpperCase());
-        this.$el.addClass(color);
-
+        this.$el.html(compiled(this.model.toJSON()));
+        
+        el = this.$el.find('.' + this.model.get('color'));
+        el.text(el.text().toUpperCase());
+        
         return this;
     },
  
     increaseStatistic: function () {
-        var increasedCounter;
-
         mediator.pub('color-selected', this.model.get('color'));
-        increasedCounter = this.model.counterIncrease();
-        this.model.set('colorCounter', increasedCounter);
+        this.model.counterIncrease();
     }
 });
 

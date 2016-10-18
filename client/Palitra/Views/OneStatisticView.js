@@ -4,25 +4,19 @@ var OneStatisticView = Backbone.View.extend({
    	
     initialize: function () {
         this.model.on('change:colorCounter', this.changeStatistic, this);
-
     },
    
 	render: function () {
-        var color = this.model.get('color');
+        var compiled = _.template(tpl.oneStatisticView);
 
-        this.$el.addClass(color);
-        this.$el.html(color + ' - ' + createStatisticHTML(this.model));
-       
+        this.$el.html(compiled(this.model.toJSON()));
         this.changeStatistic();
 
         return this;
     }, 
 
     changeStatistic: function () {
-        
         this.$el.find('.count').text(this.model.get('colorCounter'));
     }
-        
-   
 });
 
