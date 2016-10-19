@@ -4,14 +4,14 @@ var StudentsListView = Backbone.View.extend({
     className: 'list',
     
     initialize: function () {
-        this.collection.on('add', this.addLi, this);
+        this.listenTo(this.collection, 'add', this.addItem);
     },
     
     render: function () {
         return this;
     },
     
-    addLi: function (student) {
+    addItem: function (student) {
         var item = new OneStudentView({model: student});
 
         this.$el.append(item.render().el);

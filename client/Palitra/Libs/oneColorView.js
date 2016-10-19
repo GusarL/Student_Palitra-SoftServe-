@@ -1,2 +1,2 @@
 'use strict';
-tpl.oneColorView = '<li class=":color">:color</li>';
+tpl.oneColorView = '<span class=":color">:color</span>';

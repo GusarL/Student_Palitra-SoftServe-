@@ -4,14 +4,14 @@ var ColorsListView = Backbone.View.extend({
     className: 'list',
 	
     initialize: function () {
-        this.collection.on('add', this.addLi, this);
+        this.listenTo(this.collection, 'add', this.addItem);
     },
            
     render: function () {
         return this;
     },
 
-    addLi: function (color) {
+    addItem: function (color) {
         var item = new OneColorView({model: color});
         this.$el.append(item.render().el);
     }

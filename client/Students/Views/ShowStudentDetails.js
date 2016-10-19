@@ -31,10 +31,14 @@ var ShowStudentDetails = Backbone.View.extend({
     },
         
     saveEditedList: function  () {
-        this.currentStudent.set({name: $('[name="name"]').val(),
-                     lastName: $('[name="lastName"]').val(),
-                     gender: $('[name="gender"]').val(),
-                     skype: $('[name="skype"]').val()});
+        var changedStudentDetails = {
+                                     name: this.$('[name="name"]').val(),
+                                     lastName: this.$('[name="lastName"]').val(),
+                                     gender: this.$('[name="gender"]').val(),
+                                     skype: this.$('[name="skype"]').val()
+                                    }
+
+        this.currentStudent.set(changedStudentDetails);
     }
 });
 

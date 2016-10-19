@@ -11,17 +11,17 @@ li {
 	list-style: none;
 }
 
-li.blue {
+span.blue, li.blue {
 	color: blue;
 	cursor: pointer;
 }
 
-li.green {
+span.green, li.green {
 	color: green;
 	cursor: pointer;
 }
 
-li.red {
+span.red, li.red {
 	color: red;
 	cursor: pointer;
 }

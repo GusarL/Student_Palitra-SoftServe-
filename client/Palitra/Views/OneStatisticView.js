@@ -3,7 +3,7 @@ var OneStatisticView = Backbone.View.extend({
 	tagName: 'li',
    	
     initialize: function () {
-        this.model.on('change:colorCounter', this.changeStatistic, this);
+        this.listenTo(this.model, 'change:colorCounter', this.changeStatistic);
     },
    
 	render: function () {

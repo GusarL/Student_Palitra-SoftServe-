@@ -9,7 +9,7 @@ var OneStudentView = Backbone.View.extend({
     },
 
     initialize: function () {
-        this.model.on('change', this.render, this);
+        this.listenTo(this.model, 'change', this.render);
     },
 
     render: function () {
