@@ -1,7 +1,8 @@
 'use strict';
-var mediator = new Mediator();   
+var mediator = new Mediator(),
+    router = new Router();   
 
 $(function start () {
-    var palitraStart = new PalitraController(),
-        controllerStudents = new StudentController();
+    Backbone.history.start({pushState: true});
 });
+

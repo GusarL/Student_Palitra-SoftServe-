@@ -19,7 +19,7 @@ var ShowStudentDetails = Backbone.View.extend({
 
     renderDetails: function (student) {
         var compiled = _.template(tpl.detailsStudents);
-        
+
         this.currentStudent = student;
         this.$el.html(compiled(this.currentStudent.toJSON()));
     },

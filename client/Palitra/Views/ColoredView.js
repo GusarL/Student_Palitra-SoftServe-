@@ -7,7 +7,7 @@ var ColoredView = Backbone.View.extend({
     },
 
     render: function () {
-    	return this;
+        return this;
     },
 
     changeColor: function (color) {

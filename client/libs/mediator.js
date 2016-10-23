@@ -8,8 +8,7 @@ function Mediator () {
 	};
 	   
 	this.pub =  function (event, studentsCollectionEntity) {
-	    
-	    events[event].forEach(function (fn) {	
+	    events[event].forEach(function (fn) {
 	        fn(studentsCollectionEntity);
 	    });
 	};

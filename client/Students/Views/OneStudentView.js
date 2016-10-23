@@ -10,6 +10,7 @@ var OneStudentView = Backbone.View.extend({
 
     initialize: function () {
         this.listenTo(this.model, 'change', this.render);
+        mediator.sub('student-selectedURL', this.studentSelectedURL.bind(this));   
     },
 
     render: function () {
@@ -28,6 +29,17 @@ var OneStudentView = Backbone.View.extend({
         event.stopPropagation();
         this.remove();
         this.model.destroy();
+    },
+
+    studentSelectedURL: function (student) {
+        var studentIdentify = student.split('_'); 
+
+        if (this.model.get('name') === studentIdentify[0] ||
+            this.model.get('lastName') === studentIdentify[1]) { 
+
+            mediator.pub('student-selected', this.model); 
+           
+        }
     }
 });
 

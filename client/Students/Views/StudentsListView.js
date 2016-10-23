@@ -2,12 +2,12 @@
 var StudentsListView = Backbone.View.extend({
     tagName: 'ul',
     className: 'list',
-    
-    initialize: function () {
-        this.listenTo(this.collection, 'add', this.addItem);
-    },
-    
+        
     render: function () {
+        this.collection.forEach(function (student) {  
+            this.addItem(student);
+        }, this);
+
         return this;
     },
     
